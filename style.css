@@ -1,0 +1,283 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    height:100vh;
+    background:linear-gradient(#ddd6f3,  #faaca8);
+    overflow: hidden;
+}
+
+audio{
+    display:none;
+}
+
+
+.image{
+    width:fit-content;
+    height: fit-content;
+    position:absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+#balloons-container{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    bottom:325px;
+    animation: candle-shake 16s, candle-position 15s forwards;
+    z-index: 5;
+}
+
+#candle img{
+    position: relative;
+    height:48px;
+    width:auto;
+}
+
+#balloon img{
+    position: relative;
+    bottom:0;
+    margin-bottom: -20px;
+    height:200px;
+    width:auto;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+#cake{
+    opacity: 0;
+    left:0;
+    right:0;
+    bottom:-200px;
+    margin:0 auto;
+    animation:cake 8s forwards 5s;
+    z-index:2;
+}
+
+#cake img{
+    height:150px;
+    width:auto;
+    z-index:5;
+}
+
+
+
+#banner{
+    display:flex;
+    justify-content: center;
+    position: absolute;
+    left:0;
+    right:0;
+    margin:0 auto;
+    opacity:0;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+    width:800px;
+}
+
+#banner img{
+    width: 90%;
+    height:90%;
+    
+}
+
+#gang img{
+    height:auto;
+    width:480px;
+    position: absolute;
+    z-index:2;
+    margin:0 auto;
+    left:0;
+    right:0;
+    bottom:70px;
+    opacity: 0;
+    animation-duration: 6s;
+    animation-fill-mode: forwards;
+    animation-delay: 3s;
+}
+
+
+#present{
+    top:-30%;
+    position: absolute;
+    left:0;
+    right:0;
+    margin:0 auto;
+    width:120px;
+    height:120x;
+    display:flex;
+    flex-direction: column;
+    z-index:10;
+    animation: present 4s linear 0s infinite, fade 4s forwards, drop 8s ease-out 4s forwards;
+    animation-play-state: paused;
+}
+
+#present:hover{
+    cursor:pointer;
+}
+#lid{
+    position: absolute;
+    right:5px;
+    z-index:5;
+    width:100%;
+    height:auto;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+}
+
+#box{
+    position: absolute;
+    top:15px;
+    width:100%;
+    height:auto;
+}
+
+/*Overlay */
+.overlay{
+    display:none;
+    opacity: 0;
+    position: absolute;
+    font-size: 16px;
+    font-family: 'Oswald', Arial;
+    color:white;
+    background: rgba(0, 0, 0, 0.603);
+    margin:0 auto;
+    width:100%;
+    height:100vh;
+    justify-content: space-around;
+    z-index:10;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+#rotate{
+    top:40%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin: auto auto;
+    font-size: 128px;
+    width: fit-content;
+    vertical-align: middle;
+    height: 190px;
+    overflow:hidden;
+    text-align: center;
+}
+#words{
+    position: relative;
+    display:flex;
+    flex-direction: column;
+    top:286px;
+    animation: words 9s forwards;
+}
+
+#message, #credits{
+    opacity: 0;
+    animation-duration:3s;
+    animation-fill-mode: forwards;
+}
+
+.message{
+    width:45%;
+}
+
+
+.message, .credits{
+    margin-top: 32px;
+}
+
+.message h1{
+    margin-bottom:24px;
+    margin-left:16px;
+}
+
+.message p{
+    word-wrap: break-word;
+    margin-top: 8px;
+    margin-left: 16px;
+}
+
+.message img{
+    position: relative;
+    top:-40px;
+    margin-top: 24px;
+    float:right;
+    width:auto;
+    height:200px;
+}
+
+/*Credits*/
+.credits{
+  margin-left:12px;
+  width:40%;
+}
+.bold{
+    font-weight: bolder;
+}
+
+
+/*Animations */
+@keyframes banner{
+    from{opacity:0; bottom:-100px;}
+    to{opacity:1; bottom:60px;}
+}
+@keyframes cake{
+    0%{bottom:-200px; opacity:0}
+    100%{bottom:90px; opacity: 1;}
+}
+@keyframes balloon{
+    0%{bottom:0;}
+    25%{opacity: 1;}
+    50%{opacity: 1;}
+    100%{bottom:800px; opacity:0}
+}
+@keyframes candle-position{
+    0%{bottom:100%;}
+    100%{bottom:200px}
+}
+@keyframes candle-shake{
+    0%{transform: rotate(30deg)}
+    25%{transform: rotate(-30deg)}
+    50%{transform: rotate(30deg)}
+    75%{transform: rotate(-30deg)}
+    100%{transform: rotate(0deg)}
+
+}
+@keyframes present{
+    0%{transform: rotate(-15deg)}
+    25%{transform: rotate(15deg)}
+    50%{transform: rotate(-15deg)}
+    75%{transform: rotate(15deg)}
+    100%{transform: rotate(-15deg)}
+    
+}
+@keyframes fade{
+    from{opacity:0}
+    to{opacity:1}
+}
+@keyframes lid{
+    from{right:14px}
+    to{right:75px; transform:rotate(-45deg)}
+}
+@keyframes drop{
+    from{top:-30%}
+    to{top:20%}
+}
+@keyframes words{
+    0%{top:380px}
+    20%{top:180px}
+    25%{top:190px}
+    45%{top:-10px}
+    50%{top:0}
+    70%{top:-190px}
+    75%{top:-180px}
+    100%{top:-380px}
+}
+

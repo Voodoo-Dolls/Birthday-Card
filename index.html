@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="./style.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <audio id="song" controls>
+        <source src="./resources/audio/Happy-Birthday.mp3">
+    </audio>
+
+
+    <!-- Animation Divs-->
+
+    <div id="balloons-container" class="image">
+        <div id="balloon">
+            <img id='balloons' src="./resources/images/balloons.png">
+        </div>
+        <div id="candle">
+            <img src="./resources/images/candle.png">
+        </div>
+    </div>
+
+    <div id="gang">
+        <img src="./resources/images/group.png"></image>
+    </div>
+
+    <div id="banner" class="image">
+        <img src="./resources/images/banner.png"></image>
+    </div>
+    <div id="cake" class="image">
+        <img src="./resources/images/cake.png">
+    </div>
+    <div id="present">
+        <img id="lid" src="./resources/images/gift_lid.png">
+        <img id='box' src="./resources/images/gift_box.png">
+    </div>
+
+    <!--Overlay-->
+
+    <div class="overlay">
+        <!--Gift Animation-->
+
+        <div id="rotate">
+            <div id="words">
+                <span>Say hello...</span>
+                <span>to your new...</span>
+                <span>Laptop!</span>
+            </div>
+        </div>
+        <div id='message' class="message">
+            <h1>Happy Birthday Alex!</h1>
+            <p style="color:#74cbff">
+                It's hard to believe that we're both turning 23 this year and that we've known each other for over a
+                decade. Enjoy
+                your new laptop buddy. <span class=name>-Michael</span>
+            </p>
+            <p style="color:#B76E79">
+                Happy Birthday Alex Love you. <span class=name>-Martha</span>
+            </p>
+            <p style="color:#CEA3FF">
+                I love you chu Happy bday bud <span
+                    class=name>-Kervin</span>
+            </p>
+            <p style="color:#8675e2;">
+                Happy Birthday Alex, now you can waste even more time playing videogames. <span class=name>-Ashe</span>
+            </p>
+            <p style="color:#FF5C75">
+                Happy birthday Alex! Ever since our fated meeting during the gummy bear vs crazy frog debate of 2021
+                it’s been really fun hanging out and gaming with you. Have a great birthday!!! <span
+                    class=name>-Isaac</span>
+            </p>
+            <p style="color:#61d0ff">
+                Let the world continue to experience your light of your heart, happy birthday. <span
+                    class=name>-Lamarr</span>
+            </p>
+
+            <img src="./resources/images/signatures.png">
+        </div>
+        <div id='credits' class="credits">
+            <h2>Credits</h2>
+            <ul>
+                <li>
+                    <p><span class='bold'>Developer: </span>Michael Dam</p>
+                </li>
+                <li>
+                    <p><span class='bold'>Song: </span>Happy Birthday Instrumental (Lofi Version) | Happy Birthday Music
+                    </p>
+                </li>
+                <li>
+                    <p><span class='bold'>Confetti Package: </span>kirilv</p>
+                </li>
+                <li>
+                    <p><span class='bold'>Soundclip: </span>Kids Cheering | Gaming Sound FX</p>
+                </li>
+
+                <li>
+                    <p><span class='bold'>Soundclip: </span>Clapping | SFX</p>
+                </li>
+                <li>
+                    <p><span class='bold'>Heart Art: </span> Neon Heart | CITYPNG </p>
+                </li>
+                <li>
+                    <p><span class='bold'>White Sprite: </span> White Radiation | CITYPNG </p>
+                </li>
+
+                <li>
+                    <p><span class='bold'>Giftbox Art: </span>Game Icons | Behance </p>
+                </li>
+                <li>
+                    <p><span class='bold'>Other Art: </span>Ariel J Casapao</p>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <script type="module">
+        import confetti from 'https://cdn.skypack.dev/canvas-confetti';
+        let x = 0;
+        let song = document.body.querySelector('#song');
+        let container = document.body.querySelector('#balloons-container');
+        let banner = document.body.querySelector('#banner');
+        let balloons = document.body.querySelector('#balloons');
+        let gift = document.body.querySelector("#present");
+        let lid = document.body.querySelector("#lid");
+        let overlay = document.body.querySelector('.overlay');
+        let gang = document.body.querySelector("#gang img");
+        let words = document.body.querySelector("#words");
+        let message = document.body.querySelector("#message");
+        let credits = document.body.querySelector('#credits');
+        song.play();
+        container.addEventListener('animationend', () => {//Waits for candle animation then plays confetti
+            if (x === 0) {
+                confetti();
+                var audio = new Audio("./resources/audio/Cheer.mp3");
+                audio.play();
+                banner.style.animationName = 'banner';
+                balloons.style.animationName = 'balloon';
+                gift.style.animationPlayState = 'running';
+                gang.style.animationName = 'fade';
+                x++;
+            };
+        });
+        gift.addEventListener('click', () => {
+            var chest = new Audio("./resources/audio/chest.mp3")
+            lid.style.animationName = 'lid';
+            gift.style.animationPlayState = 'paused';
+            overlay.style.display = 'flex';
+            overlay.style.animationName = 'fade';
+            chest.play();
+        })
+        words.addEventListener('animationend', () => {
+            var audio = new Audio("./resources/audio/card.mp3");
+            audio.play();
+            message.style.animationName = 'fade';
+            credits.style.animationName = 'fade';
+        })
+    </script>
+</body>
+
+</html>
